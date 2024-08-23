@@ -2,27 +2,27 @@ import { DataTypes } from "sequelize";
 import sequelize from "../config/dbconnect.js";
 
 const ProductsModel = sequelize.define(
-    "Products",
+    "products",
     {
-        title : {
-            type        : DataTypes.STRING,
-            allowNull   : false,
-            field       : "title"
+        title: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            field: "title"
         },
-        value : {
-            type        : DataTypes.NUMBER,
-            allowNull   : false,
-            field       : "value"
+        value: {
+            type: DataTypes.NUMBER,
+            allowNull: false,
+            field: "value"
         },
-        description : {
-            type        : DataTypes.TEXT,
-            allowNull   : false,
-            field       : "description"
+        description: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+            field: "description"
         },
-        img : {
-            type        : DataTypes.TEXT,
-            allowNull   : false,
-            field       : "url_img"
+        img: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+            field: "url_img"
         },
     },
     {
@@ -30,5 +30,13 @@ const ProductsModel = sequelize.define(
         timestamps: false
     }
 )
+
+sequelize.sync()
+    .then(() => {
+        console.log('Banco de dados e tabelas criados!');
+    })
+    .catch((error) => {
+        console.error('Erro ao sincronizar com o banco de dados:', error);
+    });
 
 export default ProductsModel

@@ -7,7 +7,7 @@ const sequelize = new Sequelize({
 
 try {
     await sequelize.authenticate()
-    console.log("Banco de dados conectado!")
+    console.log("Banco de dados conectado! Banco de dados: ", sequelize.getDatabaseName())
 } catch (error) {
     console.log("Erro na autenticação com o banco: " + error)
     throw error
