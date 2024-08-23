@@ -9,14 +9,14 @@ class Product {
     }
 
     async create (){
-        ProductsModel.create(
+        return await ProductsModel.create(
             {
                 title       : this.title,
                 value       : this.value,
                 description : this.description,
                 img         : this.url
             },
-            {fields : ["title", "value", "description", "url_img"]}
+            {fields : ["title", "value", "description", "img"]}
         )
     }
 
