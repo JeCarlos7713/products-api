@@ -1,8 +1,16 @@
-import { Sequelize } from "sequelize";
+import Sequelize  from "sequelize";
+import path from "path"
+import { fileURLToPath } from "url";
+
+const __dirname = fileURLToPath(import.meta.url)
+
+const dbPath = path.resolve(__dirname, "./../db/products.db")
+
+console.log("Caminho do banco: " + dbPath)
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
-    storage: './../db/products.db'
+    storage: dbPath
 });
 
 try {
