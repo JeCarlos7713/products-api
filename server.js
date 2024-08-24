@@ -1,6 +1,12 @@
 import Fastify from 'fastify'
 import cors from '@fastify/cors'
-import { get, create } from "./routes/products.js"
+import {
+    get, 
+    create, 
+    update, 
+    findProduct, 
+    deleteProduct 
+} from "./routes/products.js"
 
 
 const fastify = Fastify({
@@ -14,5 +20,8 @@ await fastify.register(cors, {
 
 fastify.register(get)
 fastify.register(create)
+fastify.register(update)
+fastify.register(findProduct)
+fastify.register(deleteProduct)
 
 await fastify.listen({ port: 3000 })

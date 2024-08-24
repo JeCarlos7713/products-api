@@ -36,6 +36,7 @@ class Product {
     }
 
     async update(id){
+        console.log("ID DO PRODUTO: " + id)
         return await ProductsModel.update(
             {
                 title       : this.title,
@@ -52,7 +53,7 @@ class Product {
     }
 
     async delete(id){
-        await ProductsModel.destroy(
+        return await ProductsModel.destroy(
             {
                 where : {
                     id : id
