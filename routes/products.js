@@ -59,7 +59,7 @@ const findProduct = async(fastify, opt, done) =>{
             try {
                 const {name} = req.query
                 
-                if ([name].includes("")) {
+                if ([name].includes("") || name == undefined) {
                     
                     reply.code(400).send({ code: '400', message: 'Existe parâmetros que faltam para realizar o cadastro' });
                     return false
@@ -71,7 +71,7 @@ const findProduct = async(fastify, opt, done) =>{
                 reply.code(200).send(find)
             } catch (error) {
                 console.log(error)
-                reply.code(500).send({ code: '500', message: 'Internal Server Error', error: error });
+                reply.code(500).send({ code: '500', message: 'Internal Server Error', error: error.toString() });
             }
         }
     })
